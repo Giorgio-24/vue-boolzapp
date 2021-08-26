@@ -26,6 +26,10 @@
 }
 
 /*? BG-COLORS */
+.bg-color-white{
+    background-color: #fff;
+}
+
 .bg-color-green{
     background-color: #009688;
 }
