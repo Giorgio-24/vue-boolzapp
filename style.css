@@ -5,11 +5,29 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.profile-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 /*? COLORS */
+.color-grey{
+    color: #b1b1b1;
+}
 
 /*? BG-COLORS */
 .bg-color-green{
     background-color: #009688;
+}
+
+.bg-color-light-grey{
+    background-color: #eaeaea;
+}
+
+.bg-color-grey{
+    background-color: #b1b1b1;
 }
 /*= BODY */
 body{
