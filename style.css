@@ -69,6 +69,10 @@ body{
     overflow-y: scroll;
 }
 
+.contact{
+    height: 100px;
+}
+
 #chat{
     background-image: url(./img/mine.jpg);
     height: 545px;

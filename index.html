@@ -28,8 +28,8 @@
                     <div class="col-12 d-flex justify-content-between p-3 bg-color-light-grey">
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="your-profile-image"></div>
-                            <span class="h6">Nome utente</span>
+                                    :src="`./img/avatar${user.avatar}.jpg`" alt="your-profile-image"></div>
+                            <span class="h6">{{ user.name }}</span>
                         </div>
                         <div class="d-flex align-items-center">
                             <div><i class="fas fa-circle-notch pe-4 fs-4 color-grey"></i></div>
@@ -57,69 +57,15 @@
 
                 </div>
                 <!--^ OTHER USERS -->
-                <div id="users" class="row">
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
+                <div id="users" class="row flex-column">
+                    <div @click="currentIndex = index" v-for="(contact, index) in contacts"
+                        class="contact col-12 d-flex p-3 bg-color-white border-bottom"
+                        :class="{'bg-color-light-grey' : currentIndex === index}">
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-white border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="user-profile-image"></div>
-                            <span class="h5">Nome altro utente</span>
+                                    :src="`./img/avatar${contact.avatar}.jpg`" :alt="`${contact.name}-picture`">
+                            </div>
+                            <span class="h5">{{ contact.name }}</span>
                         </div>
                     </div>
                 </div>
@@ -128,13 +74,14 @@
             <section class="col-7">
                 <div class="row">
                     <!--? USER IN CHAT -->
-                    <div class="col-12 d-flex justify-content-between p-3 bg-color-light-grey">
+                    <div v-if="currentIndex === index" v-for="(contact, index) in contacts"
+                        class="col-12 d-flex justify-content-between p-3 bg-color-light-grey">
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    src="./img/avatar_io.jpg" alt="your-profile-image"></div>
+                                    :src="`./img/avatar${contact.avatar}.jpg`" alt="your-profile-image"></div>
                             <div>
-                                <div class="fs-6">Nome utente in chat</div>
-                                <div>Ultimo accesso oggi alle</div>
+                                <div class="fs-6">{{ contact.name }}</div>
+                                <div>Ultimo accesso 5 minuti fa</div>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -145,6 +92,7 @@
                     </div>
                     <!--? CHAT WITH USER -->
                     <div id="chat" class="col-12">
+
                     </div>
                     <div class="col-12 p-3 d-flex align-items-center">
                         <span><i class="far fa-smile fa-2x me-4 color-grey"></i></span>
