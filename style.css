@@ -34,6 +34,10 @@
     background-color: #009688;
 }
 
+.bg-color-lighter-grey{
+    background-color: #f3eeea;
+}
+
 .bg-color-light-grey{
     background-color: #eaeaea;
 }
@@ -52,13 +56,20 @@ body{
 }
 
 #root{
-    height: 95%;
-    width: 80%;
+    height: 715px;
+    width: 1300px;
 
     position: relative;
     top:2.5%
 }
 
 #users{
-    height: calc(100% - 248px);
+    height: 467px;
+    overflow-y: scroll;
+}
+
+#chat{
+    background-image: url(./img/mine.jpg);
+    height: 545px;
+    overflow-y: auto;
 }
