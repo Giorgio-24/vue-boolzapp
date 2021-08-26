@@ -16,3 +16,11 @@ body{
     height: 100vh;
     background: linear-gradient(to top, #dddbd2 15% 85%, #009688 15%);
 }
+
+#root{
+    height: 95%;
+    width: 80%;
+
+    position: relative;
+    top:2.5%
+}
