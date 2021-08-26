@@ -60,7 +60,8 @@ body{
     width: 1300px;
 
     position: relative;
-    top:2.5%
+    top:50%;
+    transform: translateY(-50%);
 }
 
 #users{
