@@ -7,7 +7,7 @@ var root = new Vue(
             data,
             currentIndex: 0,
             userMessage: '',
-            cpuMessages: ['Si', 'No', 'Okay', 'Non me lo ricordo', 'Certo!', 'Certo che no',],
+            cpuMessages: ['', 'Si', 'No', 'Okay', 'Certo!', 'Certo che no', 'Non me lo ricordo',],
         },
         methods: {
             randomiseNumber(min, max) {
@@ -15,7 +15,7 @@ var root = new Vue(
             },
             printCpuMessage(index) {
 
-                let number = this.randomiseNumber(0, this.cpuMessages.length);
+                let number = this.randomiseNumber(1, this.cpuMessages.length);
                 let cpuMessage = {
                     date: '28/03/2020 10:10:40',
                     message: this.cpuMessages[number],
@@ -23,7 +23,7 @@ var root = new Vue(
                 };
                 let pushMessage = setTimeout(() => {
                     this.data.contacts[index].messages.push(cpuMessage);
-                }, 1000)
+                }, number * 800)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGI SONO IN FONDO)
 
 
             },
