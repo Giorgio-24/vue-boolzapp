@@ -51,14 +51,16 @@
                     <div class="col-12 input-group p-3">
                         <span class="input-group-text bg-color-white border-0" id="basic-addon1"><i
                                 class="fas fa-search color-grey"></i></span>
-                        <input type="text" class="form-control border-0" placeholder="Cerca o inizia una nuova chat"
-                            aria-label="Username" aria-describedby="basic-addon1">
+                        <input v-model="searchUserByName" type="text" class="form-control border-0"
+                            placeholder="Cerca o inizia una nuova chat" aria-label="Username"
+                            aria-describedby="basic-addon1">
                     </div>
 
                 </div>
                 <!--^ OTHER USERS -->
                 <div id="users" class="row flex-column">
-                    <div @click="currentIndex = index" v-for="(contact, index) in data.contacts"
+                    <div v-if="searchUser(contact)" @click="currentIndex = index"
+                        v-for="(contact, index) in data.contacts"
                         class="contact col-12 d-flex p-3 bg-color-white border-bottom"
                         :class="{'bg-color-light-grey' : currentIndex === index}">
                         <div class="d-flex align-items-center">

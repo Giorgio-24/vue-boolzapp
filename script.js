@@ -7,6 +7,7 @@ var root = new Vue(
             data,
             currentIndex: 0,
             userMessage: '',
+            searchUserByName: '',
             cpuMessages: ['', 'Si', 'No', 'Okay', 'Certo!', 'Certo che no', 'Non me lo ricordo',],
         },
         methods: {
@@ -38,6 +39,11 @@ var root = new Vue(
 
                 /* this.userMessage = ''; */
             },
+            searchUser(contact) {
+                if (contact.name.toLowerCase().includes(this.searchUserByName.toLowerCase()) || this.searchUserByName === '') {
+                    return true;
+                }
+            }
 
         }
     });
