@@ -28,8 +28,8 @@
                     <div class="col-12 d-flex justify-content-between p-3 bg-color-light-grey">
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
-                                    :src="`./img/avatar${user.avatar}.jpg`" alt="your-profile-image"></div>
-                            <span class="h6">{{ user.name }}</span>
+                                    :src="`./img/avatar${data.user.avatar}.jpg`" alt="your-profile-image"></div>
+                            <span class="h6">{{ data.user.name }}</span>
                         </div>
                         <div class="d-flex align-items-center">
                             <div><i class="fas fa-circle-notch pe-4 fs-4 color-grey"></i></div>
@@ -58,7 +58,7 @@
                 </div>
                 <!--^ OTHER USERS -->
                 <div id="users" class="row flex-column">
-                    <div @click="currentIndex = index" v-for="(contact, index) in contacts"
+                    <div @click="currentIndex = index" v-for="(contact, index) in data.contacts"
                         class="contact col-12 d-flex p-3 bg-color-white border-bottom"
                         :class="{'bg-color-light-grey' : currentIndex === index}">
                         <div class="d-flex align-items-center">
@@ -74,7 +74,7 @@
             <section class="col-7">
                 <div class="row">
                     <!--? USER IN CHAT -->
-                    <div v-if="currentIndex === index" v-for="(contact, index) in contacts"
+                    <div v-if="currentIndex === index" v-for="(contact, index) in data.contacts"
                         class="col-12 d-flex justify-content-between p-3 bg-color-light-grey">
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"

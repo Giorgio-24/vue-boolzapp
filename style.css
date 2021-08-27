@@ -12,6 +12,14 @@
     border-radius: 50%;
 }
 
+.b-radius-10{
+    border-radius: 10px;
+}
+
+.font-11{
+    font-size: 12px;
+}
+
 /*? COLORS */
 .color-grey{
     color: #b1b1b1;
@@ -46,9 +54,15 @@
     background-color: #b1b1b1;
 }
 
-.bg-light-blue{
+.bg-color-light-blue{
     background-color: #8edafc;
 }
+
+.bg-color-light-green{
+    background-color: #d5f9ba;
+}
+
+
 /*= BODY */
 body{
     height: 100vh;
