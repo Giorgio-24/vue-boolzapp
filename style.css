@@ -92,3 +92,16 @@ body{
     height: 545px;
     overflow-y: auto;
 }
+
+.message{
+    background-color: #fff;
+}
+
+.message.sent{
+    margin-left: auto;
+    background-color: #d5f9ba
+}
+
+.message.received{
+    background-color: #fff
+}
