@@ -14,13 +14,17 @@ var root = new Vue(
                 return Math.floor(Math.random() * (max - min)) + min
             },
             printCpuMessage(index) {
+
                 let number = this.randomiseNumber(0, this.cpuMessages.length);
                 let cpuMessage = {
                     date: '28/03/2020 10:10:40',
                     message: this.cpuMessages[number],
                     status: 'received',
                 };
-                this.data.contacts[index].messages.push(cpuMessage);
+                let pushMessage = setTimeout(() => {
+                    this.data.contacts[index].messages.push(cpuMessage);
+                }, 1000)
+
 
             },
             printMessage(index) {
