@@ -7,22 +7,33 @@ var root = new Vue(
             data,
             currentIndex: 0,
             userMessage: '',
-            cpuMessage: ['Si', 'No', 'Okay', 'Non me lo ricordo', 'Certo!', 'Certo che no',],
+            cpuMessages: ['Si', 'No', 'Okay', 'Non me lo ricordo', 'Certo!', 'Certo che no',],
         },
         methods: {
             randomiseNumber(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min
             },
-            /*             printCpuMessage() {
-                            let number = this.randomiseNumber(0, this.cpuMessage.length);
-                            return `<div class="col-3 bg-color-white px-3 py-2 b-radius-10"><div>${this.cpuMessage[number]}</div><div class="font-11 text-end color-grey">27/08/21 10:21</div></div>`;
-                        }, */
-            /*             printMessage(index) {
-                            if (this.currentIndex === index) {
-                                this.printUserMessage += `<div class="col-3 bg-color-light-green px-3 py-2 ms-auto b-radius-10"><div>${this.userMessage}</div><div class="font-11 text-end color-grey">27/08/21 10:21</div></div>`;
-                                this.printUserMessage += this.printCpuMessage();
-                            }
-                        },
-                    }, */
+            printCpuMessage(index) {
+                let number = this.randomiseNumber(0, this.cpuMessages.length);
+                let cpuMessage = {
+                    date: '28/03/2020 10:10:40',
+                    message: this.cpuMessages[number],
+                    status: 'received',
+                };
+                this.data.contacts[index].messages.push(cpuMessage);
+
+            },
+            printMessage(index) {
+                let addMessage = {
+                    date: '28/03/2020 10:10:40',
+                    message: this.userMessage,
+                    status: 'sent',
+                };
+                console.log(addMessage);
+                this.data.contacts[index].messages.push(addMessage);
+
+                /* this.userMessage = ''; */
+            },
+
         }
     });
