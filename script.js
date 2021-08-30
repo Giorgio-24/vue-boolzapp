@@ -6,6 +6,7 @@ var root = new Vue(
         data: {
             data,
             currentIndex: 0,
+            randomTime: 0,
             userMessage: '',
             searchUserByName: '',
             cpuMessages: ['', 'Si', 'No', 'Okay', 'Certo!', 'Certo che no', 'Non me lo ricordo',],
@@ -13,6 +14,24 @@ var root = new Vue(
         methods: {
             randomiseNumber(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min
+            },
+            getLastAccess(contact) {
+                setTimeout(() => {
+                    contact.lastAccess = 'Online';
+                }, 1500);
+
+                setTimeout(() => {
+                    contact.lastAccess = 'Sta scrivendo...';
+                }, 3000);
+
+                setTimeout(() => {
+                    contact.lastAccess = 'Online';
+                }, (this.randomTime * 800) + 4500);
+
+                setTimeout(() => {
+                    contact.lastAccess = `Ultimo accesso il: ${contact.messages[contact.messages.length - 1].date}`;
+                }, (this.randomTime * 800) + 6000);
+
             },
             messageStructure(message, status) {
                 return {
@@ -26,16 +45,17 @@ var root = new Vue(
 
                 this.userMessage = '';
                 let number = this.randomiseNumber(1, this.cpuMessages.length);
+                this.randomTime = number;
                 setTimeout(() => {
-                    let cpuMessage = this.messageStructure(this.cpuMessages[number], 'received')
+                    let cpuMessage = this.messageStructure(this.cpuMessages[number], 'received');
 
                     this.data.contacts[index].messages.push(cpuMessage);
-                }, number * 800)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGI SONO IN FONDO)
+                }, (number * 800) + 4500)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGI SONO IN FONDO)
             },
             printMessage(index) {
                 if (!this.userMessage) return;
                 const addMessage =
-                    this.messageStructure(this.userMessage, 'sent')
+                    this.messageStructure(this.userMessage, 'sent');
                 console.log(addMessage);
                 this.data.contacts[index].messages.push(addMessage);
             },

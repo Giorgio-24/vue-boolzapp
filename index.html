@@ -67,8 +67,15 @@
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
                                     :src="`./img/avatar${contact.avatar}.jpg`" :alt="`${contact.name}-picture`">
                             </div>
-                            <span class="h5">{{ contact.name }}</span>
+                            <div class="h5">
+                                <div class="mb-2">{{ contact.name }}</div>
+                                <div class="align-self-end fs-6 fw-normal">{{
+                                    contact.lastAccess
+                                    }}</div>
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -83,7 +90,8 @@
                                     :src="`./img/avatar${contact.avatar}.jpg`" alt="your-profile-image"></div>
                             <div>
                                 <div class="fs-6">{{ contact.name }}</div>
-                                <div>Ultimo accesso 5 minuti fa</div>
+                                <div class="fw-light">{{ contact.lastAccess }}
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -105,9 +113,9 @@
                         class="col-12 p-3 d-flex align-items-center">
                         <span><i class="far fa-smile fa-2x me-4 color-grey"></i></span>
                         <div class="input-group">
-                            <input @keyup.enter="printMessage(index); printCpuMessage(index)" v-model.trim="userMessage"
-                                type="text" class="form-control border-0 p-3 me-4" placeholder="Scrivi messaggio"
-                                aria-label="Username" aria-describedby="basic-addon1">
+                            <input @keyup.enter="printMessage(index); printCpuMessage(index); getLastAccess(contact)"
+                                v-model.trim="userMessage" type="text" class="form-control border-0 p-3 me-4"
+                                placeholder="Scrivi messaggio" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <span><i class="fas fa-microphone fa-2x color-grey"></i></span>
                     </div>

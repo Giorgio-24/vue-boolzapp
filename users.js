@@ -8,6 +8,7 @@ const data = {
       name: 'Michele',
       avatar: '_1',
       visible: true,
+      lastAccess: 'Ultimo accesso il: 10/01/2020 16:15:22',
       messages: [
         {
           date: '10/01/2020 15:30:55',
@@ -30,6 +31,7 @@ const data = {
       name: 'Fabio',
       avatar: '_2',
       visible: true,
+      lastAccess: 'Ultimo accesso il: 20/03/2020 16:35:00',
       messages: [
         {
           date: '20/03/2020 16:30:00',
@@ -52,6 +54,7 @@ const data = {
       name: 'Samuele',
       avatar: '_3',
       visible: true,
+      lastAccess: 'Ultimo accesso il: 28/03/2020 16:15:22',
       messages: [
         {
           date: '28/03/2020 10:10:40',
@@ -74,6 +77,7 @@ const data = {
       name: 'Luisa',
       avatar: '_4',
       visible: true,
+      lastAccess: 'Ultimo accesso il: 10/01/2020 15:50:00',
       messages: [
         {
           date: '10/01/2020 15:30:55',
