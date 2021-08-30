@@ -14,33 +14,33 @@ var root = new Vue(
             randomiseNumber(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min
             },
-            printCpuMessage(index) {
-
-                let number = this.randomiseNumber(1, this.cpuMessages.length);
-                let cpuMessage = {
-                    date: '28/03/2020 10:10:40',
-                    message: this.cpuMessages[number],
-                    status: 'received',
+            messageStructure(message, status) {
+                return {
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                    message,
+                    status,
                 };
-                let pushMessage = setTimeout(() => {
+            },
+            printCpuMessage(index) {
+                if (!this.userMessage) return;
+
+                this.userMessage = '';
+                let number = this.randomiseNumber(1, this.cpuMessages.length);
+                setTimeout(() => {
+                    let cpuMessage = this.messageStructure(this.cpuMessages[number], 'received')
+
                     this.data.contacts[index].messages.push(cpuMessage);
                 }, number * 800)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGI SONO IN FONDO)
-
-
             },
             printMessage(index) {
-                let addMessage = {
-                    date: '28/03/2020 10:10:40',
-                    message: this.userMessage,
-                    status: 'sent',
-                };
+                if (!this.userMessage) return;
+                const addMessage =
+                    this.messageStructure(this.userMessage, 'sent')
                 console.log(addMessage);
                 this.data.contacts[index].messages.push(addMessage);
-
-                /* this.userMessage = ''; */
             },
             searchUser(contact) {
-                if (contact.name.toLowerCase().includes(this.searchUserByName.toLowerCase()) || this.searchUserByName === '') {
+                if ((contact.name.trim().toLowerCase().includes(this.searchUserByName.trim().toLowerCase()) && contact.visible === true) || this.searchUserByName.trim() === '') {
                     return true;
                 }
             }
