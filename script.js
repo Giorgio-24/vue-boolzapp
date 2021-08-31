@@ -15,8 +15,10 @@ var root = new Vue(
             randomiseNumber(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min
             },
-            deleteMessage(contact, index) {
+            deleteMessage(index) {
+                const eliminateMe = this.data.contacts[this.currentIndex].messages;
 
+                return eliminateMe.splice(index, 1);
             },
             messageStructure(message, status) {
                 return {
