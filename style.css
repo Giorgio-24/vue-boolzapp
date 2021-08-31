@@ -105,3 +105,9 @@ body{
 .message.received{
     background-color: #fff
 }
+
+.delete-message{
+    left: 100%;
+    bottom: 100%;
+    transform: translate(-155%, 95%);
+}

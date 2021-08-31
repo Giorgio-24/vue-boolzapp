@@ -15,22 +15,7 @@ var root = new Vue(
             randomiseNumber(min, max) {
                 return Math.floor(Math.random() * (max - min)) + min
             },
-            getLastAccess(contact) {
-                setTimeout(() => {
-                    contact.lastAccess = 'Online';
-                }, 1500);
-
-                setTimeout(() => {
-                    contact.lastAccess = 'Sta scrivendo...';
-                }, 3000);
-
-                setTimeout(() => {
-                    contact.lastAccess = 'Online';
-                }, (this.randomTime * 800) + 4500);
-
-                setTimeout(() => {
-                    contact.lastAccess = `Ultimo accesso il: ${contact.messages[contact.messages.length - 1].date}`;
-                }, (this.randomTime * 800) + 6000);
+            deleteMessage(contact, index) {
 
             },
             messageStructure(message, status) {
@@ -42,8 +27,16 @@ var root = new Vue(
             },
             printCpuMessage(index) {
                 if (!this.userMessage) return;
+                /* 
+                //?TEST RISPOSTE REALISTICHE.
+                                if (this.userMessage.trim().toLowerCase() === 'ciao' || 'ei' || 'hey' || 'salve') return this.userMessage = '', setTimeout(() => {
+                
+                                    let cpuMessage = this.messageStructure(`Ciao ${this.data.user.name}!`, 'received');
+                
+                                    this.data.contacts[index].messages.push(cpuMessage);
+                                }, 4500) */
 
-                this.userMessage = '';
+
                 let number = this.randomiseNumber(1, this.cpuMessages.length);
                 this.randomTime = number;
                 setTimeout(() => {
@@ -63,7 +56,29 @@ var root = new Vue(
                 if ((contact.name.trim().toLowerCase().includes(this.searchUserByName.trim().toLowerCase()) && contact.visible === true) || this.searchUserByName.trim() === '') {
                     return true;
                 }
-            }
+            },
+            getLastAccess(contact) {
+                if (!this.userMessage) return;
+
+                this.userMessage = '';
+
+                setTimeout(() => {
+                    contact.lastAccess = 'Online';
+                }, 1500);
+
+                setTimeout(() => {
+                    contact.lastAccess = 'Sta scrivendo...';
+                }, 3000);
+
+                setTimeout(() => {
+                    contact.lastAccess = 'Online';
+                }, (this.randomTime * 800) + 4500);
+
+                setTimeout(() => {
+                    contact.lastAccess = `Ultimo accesso il: ${contact.messages[contact.messages.length - 1].date}`;
+                }, (this.randomTime * 800) + 6000);
+
+            },
 
         }
     });
