@@ -119,3 +119,10 @@ body{
     bottom: 100%;
     transform: translate(-155%, 95%);
 }
+
+/*= EFFECTS */
+/*? HOVER EFFECTS */
+
+.contact:hover{
+    background-color: #eaeaea;
+}
