@@ -20,6 +20,14 @@
     font-size: 11px;
 }
 
+.unclickable{
+    pointer-events: none;
+}
+
+.let-me-click{
+    z-index: 100;
+}
+
 /*? COLORS */
 .color-grey{
     color: #b1b1b1;

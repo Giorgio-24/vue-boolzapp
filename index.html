@@ -61,8 +61,10 @@
                 <div id="users" class="row flex-column">
                     <div v-if="searchUser(contact)" @click="currentIndex = index"
                         v-for="(contact, index) in data.contacts"
-                        class="contact col-12 d-flex p-3 bg-color-white border-bottom"
+                        class="contact col-12 d-flex justify-content-between p-3 bg-color-white border-bottom"
                         :class="{'bg-color-light-grey' : currentIndex === index}">
+                        <!-- , 'unclickable' : contact.visible === false -->
+
                         <div class="d-flex align-items-center">
                             <div class="circled-box me-2"><img class="img-fluid rounded-circle"
                                     :src="`./img/avatar${contact.avatar}.jpg`" :alt="`${contact.name}-picture`">
@@ -76,6 +78,11 @@
 
                         </div>
 
+
+
+                        <div :class="{'text-danger' : contact.visible === false}"
+                            class="color-dark-grey d-lg-inline let-me-click"><i
+                                @click="contact.visible = !contact.visible" class="fas fa-ban let-me-click"></i></div>
                     </div>
                 </div>
             </section>
