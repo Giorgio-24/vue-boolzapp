@@ -45,21 +45,24 @@ var root = new Vue(
                     let cpuMessage = this.messageStructure(this.cpuMessages[number], 'received');
 
                     this.data.contacts[index].messages.push(cpuMessage);
-                }, (number * 800) + 4500)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGI SONO IN FONDO)
+                }, (number * 800) + 4500)//^ COSI IL TEMPO DI RISPOSTA DIPENDERA' DALLA LUNGHEZZA DEL MESSAGGIO(I PIU' LUNGHI SONO IN FONDO)
             },
-            printMessage(index) {
+            printMessage(contact, index) {
                 if (!this.userMessage) return;
                 const addMessage =
                     this.messageStructure(this.userMessage, 'sent');
                 console.log(addMessage);
                 this.data.contacts[index].messages.push(addMessage);
+                setTimeout(() => {//^SE NON METTO IL RITARDO, LUI SCORRE ANCORA PRIMA CHE IL MESSAGGIO 
+                    this.autoScrollDown(this.currentIndex);//^VENGA VISUALIZZATO IN PAGINA E DI CONSEGUENZA NON LO PUO' VEDERE E NON LO CONSIDERA.
+                }, 1);
             },
             searchUser(contact) {
                 if ((contact.name.trim().toLowerCase().includes(this.searchUserByName.trim().toLowerCase()) && contact.visible === true) || this.searchUserByName.trim() === '') {
                     return true;
                 }
             },
-            getLastAccess(contact) {
+            getLastAccess(contact, index) {
                 if (!this.userMessage) return;
 
                 this.userMessage = '';
@@ -74,6 +77,7 @@ var root = new Vue(
 
                 setTimeout(() => {
                     contact.lastAccess = 'Online';
+                    this.autoScrollDown(this.currentIndex);
                 }, (this.randomTime * 800) + 4500);
 
                 setTimeout(() => {
@@ -81,6 +85,12 @@ var root = new Vue(
                 }, (this.randomTime * 800) + 6000);
 
             },
+            autoScrollDown() {
+                setTimeout(() => {
+                    let element = document.getElementById('chat');
+                    element.scrollTop = element.scrollHeight;
+                }, 1);
+            }
 
         }
     });

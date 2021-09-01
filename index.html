@@ -58,8 +58,8 @@
 
                 </div>
                 <!--^ OTHER USERS -->
-                <div id="users" class="row flex-column">
-                    <div v-if="searchUser(contact)" @click="currentIndex = index"
+                <div class="users row flex-column">
+                    <div v-if="searchUser(contact)" @click="currentIndex = index; autoScrollDown();"
                         v-for="(contact, index) in data.contacts"
                         class="contact col-12 d-flex justify-content-between p-3 bg-color-white border-bottom"
                         :class="{'bg-color-light-grey' : currentIndex === index}">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <!--? CHAT WITH USER -->
-                    <div id="chat" class="col-12 p-3" v-if="currentIndex === index"
+                    <div id="chat" class="chat col-12 p-3" v-if="currentIndex === index"
                         v-for="(contact, index) in data.contacts">
                         <div v-for="(message, index) in contact.messages" :class="message.status"
                             class="message col-3 px-3 pt-3 py-2 b-radius-10 my-3 position-relative">
@@ -124,7 +124,8 @@
                         class="col-12 p-3 d-flex align-items-center">
                         <span><i class="far fa-smile fa-2x me-4 color-grey"></i></span>
                         <div class="input-group">
-                            <input @keyup.enter="printMessage(index); printCpuMessage(index); getLastAccess(contact)"
+                            <input
+                                @keyup.enter="printMessage(contact, index); printCpuMessage(index); getLastAccess(contact, index); autoScrollDown(contact, index)"
                                 v-model.trim="userMessage" type="text" class="form-control border-0 p-3 me-4"
                                 placeholder="Scrivi messaggio" aria-label="Username" aria-describedby="basic-addon1">
                         </div>

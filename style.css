@@ -86,7 +86,7 @@ body{
     transform: translateY(-50%);
 }
 
-#users{
+.users{
     height: 467px;
     overflow-y: scroll;
 }
@@ -95,7 +95,7 @@ body{
     height: 100px;
 }
 
-#chat{
+.chat{
     background-image: url(./img/mine.jpg);
     height: 545px;
     overflow-y: auto;
@@ -126,3 +126,19 @@ body{
 .contact:hover{
     background-color: #eaeaea;
 }
+
+/*? SCROLLBAR ASPECT */
+
+#chat::-webkit-scrollbar-track {
+    padding: 2px 0;
+  }
+  
+  #chat::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  #chat::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #c0bdbd;
+  }
