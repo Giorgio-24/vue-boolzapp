@@ -30,8 +30,8 @@ var root = new Vue(
             printCpuMessage(index) {
                 if (!this.userMessage) return;
                 /* 
-                //?TEST RISPOSTE REALISTICHE.
-                                if (this.userMessage.trim().toLowerCase() === 'ciao' || 'ei' || 'hey' || 'salve') return this.userMessage = '', setTimeout(() => {
+                                //?TEST RISPOSTE REALISTICHE.
+                                if (this.userMessage.trim().toLowerCase() === 'ciao' || 'ei' || 'hey' || 'salve') return setTimeout(() => {
                 
                                     let cpuMessage = this.messageStructure(`Ciao ${this.data.user.name}!`, 'received');
                 
