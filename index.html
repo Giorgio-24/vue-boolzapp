@@ -116,7 +116,13 @@
                                     class="fas fa-times"></i>
                             </div>
                             <div>{{ message.message }}</div>
-                            <small class="font-11 text-end d-block">{{ message.date }}</small>
+                            <div class="text-end">
+                                <small class="font-11 text-end">{{ message.date }}</small>
+                                <span class="double-check font-14" v-if="message.status === 'sent'"><i
+                                        class="fas fa-check color-grey" :class=""></i><i class="fas fa-check color-grey"
+                                        :class=""></i></span>
+                                <!-- Mettere la classe del colore dinamica per le spunte -->
+                            </div>
 
                         </div>
                     </div>

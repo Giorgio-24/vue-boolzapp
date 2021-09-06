@@ -86,11 +86,14 @@ var root = new Vue(
 
             },
             autoScrollDown() {
-                setTimeout(() => {
-                    let element = document.getElementById('chat');
-                    element.scrollTop = element.scrollHeight;
-                }, 1);
-            }
+                /*                 setTimeout(() => { */
+                let element = document.getElementById('chat');
+                element.scrollTop = element.scrollHeight;
+            }, /* 0); */
+            /*  } */
+            seeMessage() {
+                /* Mettere la classe del colore dinamica per le spunte */
+            },
 
         }
     });
